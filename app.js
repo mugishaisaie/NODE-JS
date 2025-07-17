@@ -1,9 +1,15 @@
-// File system Module
+const app = require('http');
 
-const {readFileSync, writeFileSync} = require('fs')
+const server = app.createServer((request,response)=>{
+    if(request.url === '/'){
+        response.end('WELCOME  to our system application')
+    }
 
-const first = readFileSync('./content/first.txt','utf8')
-const second = readFileSync('./content/second.txt','utf8')
+    else if(request.url === '/about'){
+        response.end('<h2>This is about of our web application system</h2>')
+    }else{
+        response.end('<p>Sorry We can not find what you are looking for</p>')
+    }   
+})
 
-// console.log(first,second)
-const writtenResult = writeFileSync('./content/writtenFile.text',`This is the results of written file combined : ${first} and ${second} `)
+server.listen(5000)

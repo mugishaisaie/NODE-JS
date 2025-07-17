@@ -1,0 +1,25 @@
+{
+  "name": "node-js",
+  "version": "1.0.0",
+  "description": "",
+  "main": "app.js",
+  "scripts": {
+    "start": "node app.js",
+    "dev": "nodemon app.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mugishaisaie/NODE-JS-EXPRESS.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/mugishaisaie/NODE-JS-EXPRESS/issues"
+  },
+  "homepage": "https://github.com/mugishaisaie/NODE-JS-EXPRESS#readme",
+  "devDependencies": {
+    "nodemon": "^3.1.10"
+  }
+}
