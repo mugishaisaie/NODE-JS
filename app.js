@@ -3,4 +3,9 @@
 const EventEmitter = require('events');
 const customEventEmitter = new EventEmitter();
 
-console.log(customEventEmitter)
+customEventEmitter.on("kwiga",()=>{
+    console.log("This is event 1");
+})
+
+
+customEventEmitter.emit("kwiga");
