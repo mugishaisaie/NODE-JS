@@ -1,42 +1,29 @@
-const app = require('http');
+// Express
 
-const {readFileSync} = require('fs');
-const server = app.createServer((request,response)=>{
-    // console.log(request.url)
-    const HomePage = readFileSync('./navbar-app/index.html');
-    const HomeStyle = readFileSync('./navbar-app/styles.css');
-    const HomeLogo = readFileSync('./navbar-app/logo.svg');
-    const HomeLogic = readFileSync('./navbar-app/browser-app.js');
+const express = require('express');
+const app = express();
+const peopleRouter = require('./routes/people')
+const authRouter = require('./routes/people')
 
-    const url = request.url;
-    if(url === '/'){
-        response.writeHead(200,{'content-type':'text/html'})
-        response.write(HomePage);
-        response.end();
+// parse formdata
+app.use(express.urlencoded({extended:false}))
 
-    }else if(url === '/about'){
-        response.writeHead(200,{'content-type':'text/html'})
-        response.write('<h1>About Page</h1>');
-        response.end();
-    
-    }else if (url === '/styles.css'){
-        response.writeHead(200,{'content-type':'text/css'})
-        response.write(HomeStyle);
-        response.end();
-    }else if (url === '/logo.svg'){
-        response.writeHead(200,{'content-type':'image/svg+xml'})
-        response.write(HomeLogo);
-        response.end();
-    }else if (url === '/browser-app.js'){
-        response.writeHead(200,{'content-type':'text/javascript'})
-        response.write(HomeLogic);
-        response.end();
-    }else{
-        response.writeHead(200,{'content-type':'text/html'})
-        response.write('<h1>Page Not Found</h1>');
-        response.end();
-    }
+// run all static files from methods-public folder
+// this is used to serve static files like css, js, images etc.
+app.use(express.static('./methods-public'))
 
+// parse json
+
+app.use(express.json());
+
+app.use('/api/people',peopleRouter)
+app.use('/login',authRouter)
+
+
+
+
+
+
+app.listen(3000, () => {
+    console.log('Server is running on port 3000');
 })
-
-server.listen(3000)
