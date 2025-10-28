@@ -7,4 +7,4 @@
 
 - in Express any function/middleware with four parameters is an error handling middleware 
 
-- in class instanceOf checks if error is one of your custom error  if so the middleware send response
+- in class" **instanceOf** checks if error is one of your custom error  if so the middleware send response
